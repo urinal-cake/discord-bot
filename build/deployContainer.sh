@@ -47,7 +47,7 @@ function prepareCompose() {
 
 function shutdownContainer() {
     echo "Shutting down container on deploy target: *${DEPLOY_SSH_TARGET}*! ..."
-    ssh ${DEPLOY_SSH_TARGET} "export USER_ID=`id -u` && export GROUP_ID=`id -g` && if [ -d ${DEPLOY_DIR}/ ]; then cd ${DEPLOY_DIR}/; else mkdir ${DEPLOY_DIR}/ && cd ${DEPLOY_DIR}/; fi && docker-compose down -v"
+    ssh ${DEPLOY_SSH_TARGET} "export USER_ID=`id -u` && export GROUP_ID=`id -g` && if [ -d ${DEPLOY_DIR}/ ]; then cd ${DEPLOY_DIR}/; else mkdir ${DEPLOY_DIR} && cd ${DEPLOY_DIR}/; fi && ls -lart && docker-compose down -v"
     ssh ${DEPLOY_SSH_TARGET} "rm ${DEPLOY_DIR}/docker-compose.yml"
     echo "Shutting down container on deploy target: *${DEPLOY_SSH_TARGET}*! DONE"
 }
